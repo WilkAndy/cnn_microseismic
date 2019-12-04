@@ -184,6 +184,9 @@ if opts.verbose: sys.stdout.write("\n\nPERFORMING A STRATIFIED k-FOLD CROSS VALI
 summary_file = open(output_file + ".txt", 'w')
 summary_file.write("PERFORMING A STRATIFIED k-FOLD CROSS VALIDATION WITH 10 FOLDS\n")
 summary_file.close()
+summary_file_true_false = open(output_file + "_true_false.txt", 'w')
+summary_file_true_false.write("PERFORMING A STRATIFIED k-FOLD CROSS VALIDATION WITH 10 FOLDS\n")
+summary_file_true_false.close()
 kfold = StratifiedKFold(n_splits = 10, shuffle = True, random_state = seed)
 fold_num = 0
 fig_num = 0
@@ -289,6 +292,7 @@ for train, test in kfold.split(X_orig, Y_orig):
             num_incorrect += 1
    if opts.verbose: sys.stdout.write("    Fraction of original true events classified as a true event " + str(100 * float(num_correct)/ float(num_correct + num_incorrect)) + "\n")
    summary_file.write("    Fraction of original true events classified as a true event " + str(100 * float(num_correct)/ float(num_correct + num_incorrect)) + "\n")
+   summary_file.write("    Fraction of original true events classified as a false event " + str(100 - 100 * float(num_correct)/ float(num_correct + num_incorrect)) + "\n")
 
    num_incorrect = 0
    num_correct = 0
@@ -300,9 +304,24 @@ for train, test in kfold.split(X_orig, Y_orig):
             num_incorrect += 1
    if opts.verbose: sys.stdout.write("    Fraction of false-positive events classified as a 'not an event' " + str(100 * float(num_correct)/ float(num_correct + num_incorrect)) + "\n")
    summary_file.write("    Fraction of false-positive events classified as a 'not an event' " + str(100 * float(num_correct)/ float(num_correct + num_incorrect)) + "\n")
+   summary_file.write("    Fraction of false-positive events classified as a true event " + str(100 - 100 * float(num_correct)/ float(num_correct + num_incorrect)) + "\n")
 
    summary_file.close()
 
+   summary_file_true_false = open(output_file + "_true_false.txt", 'a')
+   summary_file_true_false.write("For the images with numbers\n")
+   for i in range(len(test)):
+      summary_file_true_false.write(str(test[i]) + " ")
+   summary_file_true_false.write("\n")
+   summary_file_true_false.write("Correct results are\n")
+   for i in range(len(Y_test)):
+      summary_file_true_false.write(str(int(Y_test[i])) + " ")
+   summary_file_true_false.write("\n")
+   summary_file_true_false.write("Predictions from fold" + str(fold_num) + " are\n")
+   for i in range(len(Y_test)):
+      summary_file_true_false.write(str(int(y_predict[i][0])) + " ")
+   summary_file_true_false.write("\n")
+   summary_file_true_false.close()
 
 summary_file = open(output_file + ".txt", 'r')
 tot_num_true = 0
@@ -330,8 +349,10 @@ summary_file = open(output_file + ".txt", 'a')
 summary_file.write("SUMMARY\n")
 summary_file.write("Total number of original true events = " + str(tot_num_true) + "\n")
 summary_file.write("Total number of predicted true = " + str(tot_num_pred) + "\n")
-summary_file.write("Overal fraction of original true events classified as a true event " + str(np.round(np.mean(frac_true), decimals = 1)) + " +/- " + str(np.round(np.std(frac_true), decimals = 1)) + "\n")
-summary_file.write("Overal fraction of false-positive events classified as 'not an event' " + str(np.round(np.mean(frac_false), decimals = 1)) + " +/- " + str(np.round(np.std(frac_false), decimals = 1)) + "\n")
+summary_file.write("Overall fraction of original true events classified as a true event " + str(np.round(np.mean(frac_true), decimals = 1)) + " +/- " + str(np.round(np.std(frac_true), decimals = 1)) + "\n")
+summary_file.write("Overall fraction of original true events classified as a false event " + str(np.round(np.mean([100.0 - ft for ft in frac_true]), decimals = 1)) + " +/- " + str(np.round(np.std([100.0 - ft for ft in frac_true]), decimals = 1)) + "\n")
+summary_file.write("Overall fraction of false-positive events classified as 'not an event' " + str(np.round(np.mean(frac_false), decimals = 1)) + " +/- " + str(np.round(np.std(frac_false), decimals = 1)) + "\n")
+summary_file.write("Overall fraction of false-positive events classified as an event " + str(np.round(np.mean([100.0 - ff for ff in frac_false]), decimals = 1)) + " +/- " + str(np.round(np.std([100.0 - ff for ff in frac_false]), decimals = 1)) + "\n")
 summary_file.close()
 sys.exit(0)
 

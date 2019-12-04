@@ -2,45 +2,67 @@ PERFORMING A STRATIFIED k-FOLD CROSS VALIDATION WITH 10 FOLDS
 Fold1
     Number of true events = 11 (total size of test data = 110).  Number of predicted events = 17
     Fraction of original true events classified as a true event 81.8181818182
+    Fraction of original true events classified as a false event 18.1818181818
     Fraction of false-positive events classified as a 'not an event' 91.9191919192
+    Fraction of false-positive events classified as a true event 8.08080808081
 Fold2
     Number of true events = 11 (total size of test data = 110).  Number of predicted events = 17
     Fraction of original true events classified as a true event 72.7272727273
+    Fraction of original true events classified as a false event 27.2727272727
     Fraction of false-positive events classified as a 'not an event' 90.9090909091
+    Fraction of false-positive events classified as a true event 9.09090909091
 Fold3
     Number of true events = 10 (total size of test data = 109).  Number of predicted events = 23
     Fraction of original true events classified as a true event 60.0
+    Fraction of original true events classified as a false event 40.0
     Fraction of false-positive events classified as a 'not an event' 82.8282828283
+    Fraction of false-positive events classified as a true event 17.1717171717
 Fold4
     Number of true events = 10 (total size of test data = 109).  Number of predicted events = 13
     Fraction of original true events classified as a true event 70.0
+    Fraction of original true events classified as a false event 30.0
     Fraction of false-positive events classified as a 'not an event' 93.9393939394
+    Fraction of false-positive events classified as a true event 6.06060606061
 Fold5
     Number of true events = 10 (total size of test data = 109).  Number of predicted events = 24
     Fraction of original true events classified as a true event 70.0
+    Fraction of original true events classified as a false event 30.0
     Fraction of false-positive events classified as a 'not an event' 82.8282828283
+    Fraction of false-positive events classified as a true event 17.1717171717
 Fold6
     Number of true events = 10 (total size of test data = 108).  Number of predicted events = 22
     Fraction of original true events classified as a true event 70.0
+    Fraction of original true events classified as a false event 30.0
     Fraction of false-positive events classified as a 'not an event' 84.693877551
+    Fraction of false-positive events classified as a true event 15.306122449
 Fold7
     Number of true events = 10 (total size of test data = 108).  Number of predicted events = 20
     Fraction of original true events classified as a true event 80.0
+    Fraction of original true events classified as a false event 20.0
     Fraction of false-positive events classified as a 'not an event' 87.7551020408
+    Fraction of false-positive events classified as a true event 12.2448979592
 Fold8
     Number of true events = 10 (total size of test data = 108).  Number of predicted events = 21
     Fraction of original true events classified as a true event 80.0
+    Fraction of original true events classified as a false event 20.0
     Fraction of false-positive events classified as a 'not an event' 86.7346938776
+    Fraction of false-positive events classified as a true event 13.2653061224
 Fold9
     Number of true events = 10 (total size of test data = 108).  Number of predicted events = 27
     Fraction of original true events classified as a true event 60.0
+    Fraction of original true events classified as a false event 40.0
     Fraction of false-positive events classified as a 'not an event' 78.5714285714
+    Fraction of false-positive events classified as a true event 21.4285714286
 Fold10
     Number of true events = 10 (total size of test data = 108).  Number of predicted events = 17
     Fraction of original true events classified as a true event 80.0
+    Fraction of original true events classified as a false event 20.0
     Fraction of false-positive events classified as a 'not an event' 90.8163265306
+    Fraction of false-positive events classified as a true event 9.18367346939
 SUMMARY
 Total number of original true events = 102
 Total number of predicted true = 201
-Overal fraction of original true events classified as a true event 72.5 +/- 7.7
-Overal fraction of false-positive events classified as 'not an event' 87.1 +/- 4.6
+Overall fraction of original true events classified as a true event 72.5 +/- 7.7
+Overall fraction of original true events classified as a false event 27.5 +/- 7.7
+Overall fraction of false-positive events classified as 'not an event' 87.1 +/- 4.6
+Overall fraction of false-positive events classified as an event 12.9 +/- 4.6
